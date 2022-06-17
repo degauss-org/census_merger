@@ -31,7 +31,6 @@ n_d2 <- length(unique((d2$fips_tract_id[!is.na(d2$fips_tract_id)])))
 cli::cli_alert_info("There are {n_d1} unique tract ids in dataset 1, {n_d2} unique tract ids in dataset 2, and {n_both} unique tract ids present in both datasets.")
 
 ## add code here to calculate geomarkers
-
 d <- left_join(d1, d2, by = "fips_tract_id")
 
 file_name_merged <- glue::glue("{stringr::str_remove(opt$filename1, '.csv')}_{basename(opt$filename2)}")
