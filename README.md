@@ -17,7 +17,7 @@ docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_
 
 will produce a merged file called `my_address_file_geocoded_census_block_group_0.5.1_2010_census_level_data_census_merger_0.1.0.csv`.
 
-### Required Argument
+### Required Arguments
 
 Note that this container requires two arguments -- the name of each file to be merged. This container performs a [left join](https://statisticsglobe.com/r-dplyr-join-inner-left-right-full-semi-anti), so the data in the second file will be added on to the first file. In many cases, file 1 will be your individual- or patient-level data, and file 2 will be your census tract-level data. The two files will always be joined using the `fips_tract_id_xxxx` (where `xxxx` denotes the census vintage) column in file 1 and the first column in file 2, regardless of name.
 

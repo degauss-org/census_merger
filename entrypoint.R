@@ -40,8 +40,9 @@ f1_name <- names(d1)[substr(names(d1), 1, 13) == "fips_tract_id"]
 f2_name <- names(d2)[1]
 names(d2)[1] <- f1_name
 
-if(f1_name < 1) {
-  cli::cli_alert_error("File 1 does not contain a column name matching output from the DeGAUSS census_block_group_container.")
+if(length(f1_name) < 1) {
+  cli::cli_alert_danger("File 1 does not contain a column name matching output from the DeGAUSS census_block_group container.")
+  stop()
 }
 
 cli::cli_alert_info("Data will be joined using the {f1_name} column from file 1 and the {f2_name} column from file 2")
