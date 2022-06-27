@@ -41,11 +41,11 @@ f2_name <- names(d2)[1]
 names(d2)[1] <- f1_name
 
 if(length(f1_name) < 1) {
-  cli::cli_alert_danger("File 1 does not contain a column name matching output from the DeGAUSS census_block_group container.")
+  cli::cli_alert_danger("{opt$filename1} does not contain a column name matching output from the DeGAUSS census_block_group container.")
   stop()
 }
 
-cli::cli_alert_info("Data will be joined using the {f1_name} column from file 1 and the {f2_name} column from file 2")
+cli::cli_alert_info("Data will be joined using the {f1_name} column from {opt$filename1} and the {f2_name} column from {opt$filename2}")
 
 
 
@@ -68,7 +68,7 @@ n_d2 <- length(unique((d2 %>%
                          dplyr::filter(!is.na(.)) %>%
                          pull())))
 
-cli::cli_alert_info("There are {n_d1} unique tract ids in dataset 1, {n_d2} unique tract ids in dataset 2, and {n_both} unique tract ids present in both datasets.")
+cli::cli_alert_info("There are {n_d1} unique tract ids in {opt$filename1}, {n_d2} unique tract ids in {opt$filename2}, and {n_both} unique tract ids present in both datasets.")
 
 ## add code here to calculate geomarkers
 d <- left_join(d1, d2, by = {{f1_name}})
