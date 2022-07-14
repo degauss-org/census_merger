@@ -15,33 +15,33 @@ doc <- "
 opt <- docopt::docopt(doc)
 
 ## for interactive testing
-## opt <- docopt::docopt(doc, args = c('test/my_address_file_geocoded_census_block_group_0.5.1_2010.csv', 'test/census_mega_example.csv'))
+## opt <- docopt::docopt(doc, args = c('test/my_address_file_geocoded_census_block_group_0.6.0_2010.csv', 'test/census_mega_example.csv'))
 
 message("reading input files...")
 d1 <- suppressWarnings(
   readr::read_csv(opt$filename1,
-                  col_types = cols(fips_tract_id_2020 = col_character(),
-                                   fips_tract_id_2010 = col_character(),
-                                   fips_tract_id_2000 = col_character(),
-                                   fips_tract_id_1990 = col_character(),
-                                   fips_tract_id_1980 = col_character(),
-                                   fips_tract_id_1970 = col_character(),
-                                   fips_block_group_id_2020 = col_character(),
-                                   fips_block_group_id_2010 = col_character(),
-                                   fips_block_group_id_2000 = col_character(),
-                                   fips_block_group_id_1990 = col_character()
+                  col_types = cols(census_tract_id_2020 = col_character(),
+                                   census_tract_id_2010 = col_character(),
+                                   census_tract_id_2000 = col_character(),
+                                   census_tract_id_1990 = col_character(),
+                                   census_tract_id_1980 = col_character(),
+                                   census_tract_id_1970 = col_character(),
+                                   census_block_group_id_2020 = col_character(),
+                                   census_block_group_id_2010 = col_character(),
+                                   census_block_group_id_2000 = col_character(),
+                                   census_block_group_id_1990 = col_character()
                                    )
                   )
   )
 
 d2 <- readr::read_csv(opt$filename2, col_types = list(col_character()))
 
-f1_name <- names(d1)[substr(names(d1), 1, 13) == "fips_tract_id"]
+f1_name <- names(d1)[substr(names(d1), 1, 15) == "census_tract_id"]
 f2_name <- names(d2)[1]
 names(d2)[1] <- f1_name
 
 if(length(f1_name) < 1) {
-  cli::cli_alert_danger("{opt$filename1} does not contain a column name matching output from the DeGAUSS census_block_group container.")
+  cli::cli_alert_danger("{opt$filename1} does not contain a column name matching output from the DeGAUSS census_block_group container. There must be a column that starts with `census_tract_id`.")
   stop()
 }
 
