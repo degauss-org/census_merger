@@ -12,10 +12,10 @@ If
 - `census_level_data.csv` is a second file in the current working directory with its first column also containing census tract identifiers, then the [DeGAUSS command](https://degauss.org/using_degauss.html#DeGAUSS_Commands):
 
 ```sh
-docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/census_merger:0.1.1 my_address_file_geocoded_census_block_group_0.6.0_2010.csv census_level_data.csv
+docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/census_merger:0.1.2 my_address_file_geocoded_census_block_group_0.6.0_2010.csv census_level_data.csv
 ```
 
-will produce a merged file called `my_address_file_geocoded_census_block_group_0.6.0_2010_census_level_data_census_merger_0.1.1.csv`.
+will produce a merged file called `my_address_file_geocoded_census_block_group_0.6.0_2010_census_level_data_census_merger_0.1.2.csv`.
 
 ### Required Arguments
 

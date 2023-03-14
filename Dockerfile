@@ -2,7 +2,7 @@ FROM rocker/r-ver:4.0.5
 
 # DeGAUSS container metadata
 ENV degauss_name="census_merger"
-ENV degauss_version="0.1.1"
+ENV degauss_version="0.1.2"
 ENV degauss_description="the result of two merged census tract-level files"
 
 # add OCI labels based on environment variables too

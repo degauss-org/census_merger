@@ -20,7 +20,8 @@ opt <- docopt::docopt(doc)
 message("reading input files...")
 d1 <- suppressWarnings(
   readr::read_csv(opt$filename1,
-                  col_types = cols(census_tract_id_2020 = col_character(),
+                  col_types = cols(census_tract_id = col_character(),
+                                   census_tract_id_2020 = col_character(),
                                    census_tract_id_2010 = col_character(),
                                    census_tract_id_2000 = col_character(),
                                    census_tract_id_1990 = col_character(),
